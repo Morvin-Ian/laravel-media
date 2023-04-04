@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username');
+            $table->string('uuid')->unique()->nullable();
             $table->string('email')->unique();
+            $table->string('profile')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -22,6 +24,11 @@ return new class extends Migration
         });
     }
 
+
+    // $table->foreignId('post_id')
+    // ->constrained()
+    // ->onUpdate('cascade')
+    // ->onDelete('cascade');
     /**
      * Reverse the migrations.
      */
@@ -30,3 +37,5 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+
+

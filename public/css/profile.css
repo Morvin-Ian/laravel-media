@@ -1,0 +1,123 @@
+.profile-content{
+    color: #001c40;
+    display: flex;
+    margin-top: 4%;  
+    height: 100%;
+
+   
+}
+
+.media-body{
+    padding: 40px;
+    background-color: #e2e4eef5;
+    flex-basis: 50%;
+    border-radius: 5px;
+
+
+}
+
+.media-body .btn{
+
+    background-color: #001c40;;
+    padding: 5px 20px;
+    color: #fff;
+    font-weight: light;
+    margin-left: 40%;
+    margin-top: 10px;
+}
+
+.media-body .btn:hover{
+    border:1px solid #001c40;;
+    padding: 5px 20px;
+    background-color: transparent;
+    color: #001c40;
+}
+
+.left-sidebar{
+    padding: 10px;
+    background-color: #e2e4eebd;
+    flex-basis: 30%;
+    margin-left: 0px;
+
+}
+
+.left-sidebar .top{
+    background-color: #22b8cfea;
+    height: 200px;
+    border-radius: 7px;
+    padding: 20px;
+}
+
+.top li{
+    list-style: circle;
+}
+
+.top .btn{
+
+    padding: 5px 20px;
+    color: #001c40;;;
+    font-weight: light;
+    border: 1px solid #001c40;
+    box-shadow: 3px 7px #001c40;
+ 
+}
+
+.top .btn:hover{
+    border:1px solid #001c40;;
+    padding: 5px 20px;
+    background-color: transparent;
+    color: #001c40;
+    box-shadow: 3px 10px #001c40;
+}
+
+.bottom{
+    background-color: #e2e4eef2;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.bottom li{
+    list-style: circle;
+}
+@media only screen and (max-width: 768px) {
+    .profile-content{
+        color: #001c40;
+        display: flex;
+        margin-top: 5%;  
+    
+       
+    }
+    
+    .media-body{
+        padding: 40px;
+        background-color: #e2e4eef5;
+        flex-basis: 50%;
+        border-radius: 5px;
+    
+    
+    }
+    
+    .media-body .btn{
+    
+        background-color: #001c40;;
+        padding: 5px 20px;
+        color: #fff;
+        font-weight: light;
+        margin-left: 40%;
+        margin-top: 10px;
+    }
+    
+    .media-body .btn:hover{
+        border:1px solid #001c40;;
+        padding: 5px 20px;
+        background-color: transparent;
+        color: #001c40;
+    }
+    
+    .left-sidebar{
+        display: none;
+    }
+    
+
+}

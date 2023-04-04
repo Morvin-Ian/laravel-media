@@ -1,16 +1,24 @@
 @extends('layout')
 
-@include('partials/_nav')
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
+
 
 @section('content')
+@include('partials/_topnav')
+@include('partials/_nav')
 
         <div class="container">
         <div class="left-panel">
             <ul>
-                <li>
-                    <i class="fa fa-user"></i>    
-                    <p>Profile</p>
-                </li>
+                @auth
+                    <a href="/profile/{{Auth::user()->uuid}}">
+                        <li>
+                            <i class="fa fa-user"></i>    
+                            <p>Profile</p>
+                        </li>
+                    </a>
+                @endauth
+                
                 <li>
                     <i class="fa fa-user-friends"></i>
                     <p>Friends</p>

@@ -1,57 +1,32 @@
-<nav>
-    <div class="nav-left">
-        <i style="font-size: larger" class="fas fa-gem"></i>
-        <input type="text" placeholder="Search Brace..">
+@extends('layout')
+
+<link rel="stylesheet" href="{{asset('css/nav.css')}}">
+
+<nav >
+    <div class="container-fluid">
+      <div class="d-flex justify-content-evenly p-3">
+        <div class="welcome pt-3">
+            <h2>Hello, Morvin Ian!!</h2>
+            <small>Converse with friends and families.</small>
+        </div>
+        @auth
+
+        <div class="sign-out pt-4">
+            <a class="btn ps-4 pe-4 ms-5" href="/logout">Sign Out <i class="fas fa-arrow-right"></i> </a>  <br>
+            <a class="text-center" href="/sign-up">Register another account.</a>
+         </div>
+
+        @else
+        <div class="sign-out pt-4">
+            <a class="btn ps-4 pe-4 ms-5" href="/sign-in">Sign In <i class="fas fa-arrow-right"></i> </a>  <br>
+            <a class="text-center" href="/sign-up">Register another account.</a>
+         </div>
+            
+        @endauth
+       
+
+      </div>
+      
     </div>
 
-    <div class="nav-middle">
-        <a href="#" class="active">
-            <i class="fa fa-home"></i>
-        </a>
-
-        <a href="#">
-            <i class="fa fa-user-friends"></i>
-        </a>
-
-        <a href="#">
-            <i class="fa fa-play-circle"></i>
-        </a>
-
-        <a href="#">
-            <i class="fa fa-users"></i>
-        </a>
-    </div>
-
-    @auth
-    <div class="nav-right">
-        <span class="profile"></span>
-
-        <a href="#">
-            <i class="fa fa-bell"></i>
-        </a>
-
-        <a href="#">
-            <i class="fas fa-ellipsis-h"></i>
-        </a>
-
-        <a href="/logout">
-            <i class="fas fa-arrow-right"></i> 
-        </a>  
-    </div>
-    @else
-    <div class="nav-right me-3">
-        <a href="/sign-up">
-            <i class="fas fa-user"></i>
-        </a>
-
-        <a href="/sign-in">
-            <i class="fas fa-arrow-right"></i> 
-        </a>  
-    </div>
-        
-    @endauth
-
-   
 </nav>
-
-
