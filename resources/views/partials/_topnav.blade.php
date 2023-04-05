@@ -33,9 +33,12 @@
                     <a class="" aria-current="page" href="">Blog</a>
                 </li>
         </ul>
-        <li>
-            <a class="ms-5" style="margin-right: 30px;" href="/profile"><i style="font-size: x-large;" class="fas fa-user-circle"></i></a>
-        </li>
+        @auth
+            <li>
+                <a class="ms-5" style="margin-right: 30px;" href="/profile/{{Auth::user()->uuid}}"><i style="font-size: x-large;" class="fas fa-user-circle"></i></a>
+            </li>
+        @endauth
+      
       </div>
     </div>
 </section>

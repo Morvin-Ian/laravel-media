@@ -32,7 +32,7 @@ class AuthController extends Controller
         $uuid = Str::uuid()->toString();
         $fields = $request->validate([
             'username'=>['required', 'min:3'],
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed']
 
         ]);
@@ -46,7 +46,7 @@ class AuthController extends Controller
         $user->save();
         auth()->login($user);
 
-        return redirect('/')->with('message', "Logged In");
+        return redirect('/');
     }
 
     public function login(Request $request)
@@ -64,8 +64,7 @@ class AuthController extends Controller
         if($user)
         {
             $request->session()->regenerate();
-            return redirect('/')
-                ->with('message', "Logged in");
+            return redirect('/');
         }
 
 
@@ -91,7 +90,7 @@ class AuthController extends Controller
         {
             $user_profile = User::where('uuid', $request->uuid)->get()[0];
             $authenticated_user = auth()->user();
-            
+
             $context_array = [
                 'profile_owner'=> $user_profile,
                 'user'=>$authenticated_user,

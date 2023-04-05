@@ -72,7 +72,7 @@
             @else
                 <h5 class="pt-2 text-center">{{ $profile_owner->username }}'s Profile</h5>
                 <div class="d-flex">
-                    <img  style="object-fit: cover;" class="rounded-circle account-img" src="/images/boy.jpg" width="100px" height="100px">
+                    <img  style="object-fit: cover;" class="rounded-circle account-img" src="{{$profile_owner->profile ? asset('storage/'.$profile_owner->profile) : asset('/images/boy.jpg')}}" width="100px" height="100px">
 
                     <div class="ms-3 mt-4">
                         <p class="account-heading ">{{ $profile_owner->username }}</p>
