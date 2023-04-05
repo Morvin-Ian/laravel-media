@@ -16,7 +16,14 @@
     <title>Brace</title>    
 </head>
 <body>
+    @if(session()->has('message'))
+    <div class="container">
+        <p class="text-center">
+            <small class="bg-danger pt-2 pb-2 ps-5 pe-5" style="color: white;" >{{session('message')}}</small>
+        </p>
+    </div>
 
+    @endif
     @yield('content')
         
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

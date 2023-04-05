@@ -23,8 +23,9 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('/sign-in', 'sign_in');
     Route::get('/logout', 'logout');
 
-
     Route::post('/login', 'login');
     Route::post('/register', 'register');
+    Route::post('/profile/{uuid}/update', 'profile_update');
+
 
 });

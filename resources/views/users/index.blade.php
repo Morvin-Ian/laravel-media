@@ -11,9 +11,9 @@
         <div class="left-panel">
             <ul>
                 @auth
-                    <a href="/profile/{{Auth::user()->uuid}}">
+                    <a style="text-decoration: none; color:black;" href="/profile/{{Auth::user()->uuid}}">
                         <li>
-                            <i class="fa fa-user"></i>    
+                            <img style="object-fit: cover;" class="rounded-circle account-img" src="{{Auth::user()->profile ? asset('storage/'.Auth::user()->profile) : asset('/images/boy.jpg')}}" width="30px" height="30px">
                             <p>Profile</p>
                         </li>
                     </a>

@@ -2,26 +2,25 @@
 
 @section('content')
 
-@if(session()->has('message'))
-  <div class="container">
-      <p class="text-center">
-          <small class="bg-danger pt-2 pb-2 ps-5 pe-5" style="color: white;" >{{session('message')}}</small>
-      </p>
-  </div>
-
-@endif
     
 <form class='m-5 ps-5 pe-5' action="/login" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-2 ">
       <label for="exampleFormControlInput1" class="form-label">Email</label>
-      <input type="email" class="form-control" name="email" required>
+      <input type="email" class="form-control" name="email">
+      @error('email')
+          <small class="text-danger m-1">{{$message}}</small class="text-danger m-1">
+      @enderror
     </div>
 
     
     <div class="mb-2 ">
         <label for="ExampleFormControlInput1" class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" required>
+        <input type="password" class="form-control" name="password">
+
+        @error('password')
+          <small class="text-danger m-1">{{$message}}</small class="text-danger m-1">
+        @enderror
     </div>
 
     <div class="text-center text-lg-start mt-4 pt-2">

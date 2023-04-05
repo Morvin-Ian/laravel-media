@@ -6,7 +6,9 @@
 @include('partials/_topnav')
 
 
+
 <div class="profile-content">
+    
 
         <div class="left-sidebar ">
             <div class="top">
@@ -38,7 +40,7 @@
             <h5 class="pt-2 text-center">Update Profile</h5>
 
             <div class="d-flex">
-                <img  style="object-fit: cover;" class="rounded-circle account-img" src="/images/boy.jpg" width="100px" height="100px">
+                <img  style="object-fit: cover;" class="rounded-circle account-img" src="{{$user->profile ? asset('storage/'.$user->profile) : asset('/images/boy.jpg')}}" width="100px" height="100px">
 
                 <div class="ms-3 mt-4">
                     <p class="account-heading ">{{ $user->username }}</p>
@@ -55,12 +57,15 @@
                 vero doloremque nisi nesciunt pariatur saepe ipsam. Ab, esse. Exercitationem officia eligendi labore!
             </div>
 
-            <form method='POST' enctype="multipart/form-data">
-                 @csrf
-                    {{-- {{ d_form|crispy }}
-                    {{ p_form|crispy }}   --}}
-
-                    <button class="btn" type="submit" name="update" >Edit</button>
+            <form action="/profile/{{$user->uuid}}/update" method='POST' enctype="multipart/form-data">
+                @csrf
+                <label for="first_name">Username:</label>
+                <input class="form-control" type="text" name="username" value="{{$user->username}}" >
+                <label for="first_name">Email:</label>
+                <input class="form-control" type="text" name="email" value="{{$user->email}}" >
+                <label for="first_name">Profile Pic:</label>
+                <input class="form-control" type="file" name="profile">
+                <button class="btn" type="submit" name="update" >Edit</button>
              
             </form>
                 
@@ -119,5 +124,5 @@
 
 
 </div>
-   
+
 @endsection

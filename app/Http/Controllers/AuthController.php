@@ -16,25 +16,6 @@ class AuthController extends Controller
         return view('users.index');
     }
 
-    public function profile(Request $request)
-    {           
-        $user_profile = User::where('uuid', $request->uuid)->get()[0];
-        $authenticated_user = auth()->user();
-
-        if(auth()->check())
-        {
-       
-            $context_array = [
-                'profile_owner'=> $user_profile,
-                'user'=>$authenticated_user,
-                'uuid'=>$request->uuid
-            ];
-
-            return view('users.profile',$context_array);
-        }
-
-        return redirect('/sign-in');
-    }
 
     public function sign_in()
     {
@@ -102,6 +83,54 @@ class AuthController extends Controller
         return redirect('/');
        
     }
+
+    public function profile(Request $request)
+    {           
+       
+        if(auth()->check())
+        {
+            $user_profile = User::where('uuid', $request->uuid)->get()[0];
+            $authenticated_user = auth()->user();
+            
+            $context_array = [
+                'profile_owner'=> $user_profile,
+                'user'=>$authenticated_user,
+                'uuid'=>$request->uuid
+            ];
+
+            return view('users.profile',$context_array);
+        }
+
+        return redirect('/sign-in');
+    }
+
+    public function profile_update(Request $request)
+    {           
+        $user = auth()->user();
+
+        $fields = $request->validate([
+      
+            'username'=> 'required',
+            'profile'=> 'sometimes',
+            'email'=> 'sometimes|email'
+
+
+        ]);
+
+        if($request->hasFile('profile'))
+        {
+            $fields['profile'] = $request->file('profile')->store('profiles', 'public');
+            $user->profile = $fields['profile'];
+        }
+
+        $user->username = $fields['username'];
+        $user->email = $fields['email'];
+        $user->save();    
+
+        return redirect("/profile/$request->uuid");
+
+    }
+
 
     
 }
