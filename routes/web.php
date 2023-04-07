@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +19,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->group(function(){
     Route::get('/', 'index');
-    Route::get('/profile/{uuid}', 'profile');
-    Route::get('/sign-up', 'sign_up');
-    Route::get('/sign-in', 'sign_in');
-    Route::get('/logout', 'logout');
+    Route::get('/profile/{uuid}', 'profile')->name('profile');
+    Route::get('/sign-up', 'sign_up')->name('sign-up');
+    Route::get('/sign-in', 'sign_in')->name('sign-in');
+    Route::get('/logout', 'logout')->name('logout');
 
     Route::post('/login', 'login');
     Route::post('/register', 'register');
     Route::post('/profile/{uuid}/update', 'profile_update');
+
+
+});
+
+Route::controller(PostController::class)->group(function(){
+    Route::get('/posts/create-post', 'create_post');
+
+    Route::post('/post', 'post');
 
 
 });

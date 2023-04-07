@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -13,7 +14,13 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('users.index');
+        $posts = Post::all();
+
+        $assoc_array = [
+            'posts'=>$posts
+        ];
+
+        return view('users.index', $assoc_array);
     }
 
 
@@ -115,6 +122,7 @@ class AuthController extends Controller
 
 
         ]);
+
 
         if($request->hasFile('profile'))
         {
