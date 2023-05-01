@@ -115,7 +115,7 @@
                     <div class="dp">
                         <img src="./images/girl.jpg" alt="">
                     </div>
-                    <input type="text" placeholder="What's on your mind, Aashish ?" />
+                    <input type="text" placeholder="What's on your mind, {{auth()->user() ? auth()->user()->username : "Stranger!!"}} ?" />
                 </div>
                 
                 <div class="post-bottom">
@@ -139,13 +139,19 @@
             <div class="post">
             <div class="post-top">
                 <div class="dp">
-                    <img src="./images/dp.jpg" alt="">
+                    <img style="object-fit: cover;" class="rounded-circle account-img" height="50px" width="50px" src="{{$post->user->profile ? asset('storage/'.$post->user->profile) : asset('/images/boy.jpg')}}" >
                 </div>
                 <div class="post-info">
-                    <p class="name">Ramesh GC</p>
-                    <span class="time">2 days ago</span>
+                    <span class="name">{{$post->user->username}}</span> <br>
+                    <span class="time">Posted - {{ $post->created_at->diffForHumans() }}</span>
                 </div>
-                <i class="fas fa-ellipsis-h"></i>
+                @if ($post->user == auth()->user())
+                <form style="margin-left: 60%" action="/destroy/{{$post->id}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button style="border: none"> <i class="fas fa-trash"></i></button>
+                </form>
+                @endif
             </div>
 
             <div class="post-content">
@@ -180,7 +186,7 @@
         </div>
         <div class="right-panel">
             <div class="pages-section">
-                <h4>Your pages</h4>
+                <h6>Your pages</h6>
                 <a class='page' href="#">
                     <div class="dp">
                         <img src="./images/logo.png" alt="">
@@ -197,7 +203,7 @@
             </div>
 
             <div class="friends-section">
-                <h4>Friends</h4>
+                <h6>Friends</h6>
                 <a class='friend' href="#">
                     <div class="dp">
                         <img src="./images/dp.jpg" alt="">

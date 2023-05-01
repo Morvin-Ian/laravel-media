@@ -35,6 +35,6 @@ Route::controller(PostController::class)->group(function(){
     Route::get('/posts/create-post', 'create_post');
 
     Route::post('/post', 'post');
-
+    Route::delete('/destroy/{id}', 'destroy')->name('destroy');
 
 });

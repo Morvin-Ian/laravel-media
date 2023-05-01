@@ -37,4 +37,12 @@ class PostController extends Controller
         Post::create($fields);
         return redirect('/');
     }
+
+    public function destroy(Request $request)
+    {
+        $post = Post::where('id', $request->id)->get()[0];
+        $post->delete();
+        return redirect('/');
+        
+    }
 }
