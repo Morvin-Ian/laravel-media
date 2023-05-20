@@ -139,7 +139,9 @@
             <div class="post">
             <div class="post-top">
                 <div class="dp">
-                    <img style="object-fit: cover;" class="rounded-circle account-img" height="50px" width="50px" src="{{$post->user->profile ? asset('storage/'.$post->user->profile) : asset('/images/boy.jpg')}}" >
+                    <a href="{{route('profile', $post->user->uuid)}}">
+                        <img style="object-fit: cover;" class="rounded-circle account-img" height="50px" width="50px" src="{{$post->user->profile ? asset('storage/'.$post->user->profile) : asset('/images/boy.jpg')}}" >
+                    </a>
                 </div>
                 <div class="post-info">
                     <span class="name">{{$post->user->username}}</span> <br>
